@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:background="http://schemas.android.com/apk/res-auto"
     tools:context=".activty.MainActivity">
 
     <LinearLayout
@@ -41,22 +42,16 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp">
 
-                    <TextView
+                    <EditText
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Lernsets verwalten"
+                        android:hint="Name"
+                        android:background="@drawable/edittext"
                         android:textColor="#000000"
                         android:textSize="24sp"
                         android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/add"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:onClick="add"
-                        android:src="@drawable/add" />
 
                 </LinearLayout>
 
@@ -66,12 +61,19 @@
 
                     <LinearLayout
                         android:id="@+id/cards"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_gravity="center_horizontal">
 
                         <!-- Your LinearLayout content goes here -->
 
+                        <ImageView
+                            android:id="@+id/add"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:onClick="add"
+                            android:src="@drawable/add" />
                     </LinearLayout>
                 </ScrollView>
 

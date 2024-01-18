@@ -27,6 +27,9 @@
         <activity
             android:name=".activty.CardsetViewActivity"
             android:exported="true" />
+        <activity
+            android:name=".activty.CardsetEditViewActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

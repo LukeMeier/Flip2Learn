@@ -24,7 +24,7 @@ public class CardAddViewActivity extends AppCompatActivity {
     }
     public void add(View view) {
         CardService db = new CardService(CardAddViewActivity.this);
-        db.addCard("test", "test", false);
+        db.addCard(germanName.getText().toString(), forgeinName.getText().toString(), false);
         Intent intent = new Intent(this, CardViewActivity.class);
         startActivity(intent);
     }

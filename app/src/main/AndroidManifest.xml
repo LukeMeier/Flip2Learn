@@ -13,7 +13,7 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".activty.MainActivity"
+            android:name="Flip2Learn.activty.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activty.CardViewActivity"
+            android:name="Flip2Learn.activty.CardViewActivity"
             android:exported="true" />
         <activity
-            android:name=".activty.LearnViewActivity"
+            android:name="Flip2Learn.activty.LearnViewActivity"
             android:exported="true" />
         <activity
-            android:name=".activty.CardAddViewActivity"
+            android:name="Flip2Learn.activty.CardAddViewActivity"
             android:exported="true" />
     </application>
 

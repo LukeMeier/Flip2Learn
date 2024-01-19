@@ -1,4 +1,4 @@
-package com.example.myapplication.activty;
+package Flip2Learn.activty;
 
 import androidx.appcompat.app.AppCompatActivity;
 

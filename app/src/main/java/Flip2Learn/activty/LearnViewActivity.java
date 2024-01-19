@@ -1,12 +1,12 @@
-package com.example.myapplication.activty;
+package Flip2Learn.activty;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 
-import myapplication.service.CardService;
+import Flip2Learn.service.CardService;
 
 public class LearnViewActivity extends AppCompatActivity implements SensorEventListener{
     private SensorManager sensorManager;
@@ -40,13 +40,13 @@ public class LearnViewActivity extends AppCompatActivity implements SensorEventL
     }
 
     public void flip(View view) {
-        String germanName = cardCursor.getString(cardCursor.getColumnIndex("germanName"));
-        String forgeinName = cardCursor.getString(cardCursor.getColumnIndex("forgeinName"));
+        @SuppressLint("Range") String germanName = cardCursor.getString(cardCursor.getColumnIndex("germanName"));
+        @SuppressLint("Range") String foreignName = cardCursor.getString(cardCursor.getColumnIndex("foreignName"));
 
-        if (cardText.getText().toString().equals(forgeinName)) {
+        if (cardText.getText().toString().equals(foreignName)) {
             cardText.setText(germanName);
         } else if (cardText.getText().toString().equals(germanName)) {
-            cardText.setText(forgeinName);
+            cardText.setText(foreignName);
         }
     }
 
@@ -55,8 +55,8 @@ public class LearnViewActivity extends AppCompatActivity implements SensorEventL
         cardCursor = db.readCardsNotLearned();
 
         cardCursor.moveToFirst();
-        String forgeinName = cardCursor.getString(cardCursor.getColumnIndex("forgeinName"));
-        cardText.setText(forgeinName);
+        @SuppressLint("Range") String foreignName = cardCursor.getString(cardCursor.getColumnIndex("foreignName"));
+        cardText.setText(foreignName);
     }
 
     private void next() {
@@ -66,10 +66,10 @@ public class LearnViewActivity extends AppCompatActivity implements SensorEventL
         } else {
             cardCursor.moveToNext();
         }
-        String forgeinName = cardCursor.getString(cardCursor.getColumnIndex("forgeinName"));
+        @SuppressLint("Range") String foreignName = cardCursor.getString(cardCursor.getColumnIndex("foreignName"));
 
 
-        cardText.setText(forgeinName);
+        cardText.setText(foreignName);
     }
 
     @Override
@@ -88,17 +88,18 @@ public class LearnViewActivity extends AppCompatActivity implements SensorEventL
         }
     }
 
+    @SuppressLint("Range")
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
-            float angularSpeedY = event.values[1];
+            float rotation = event.values[1];
 
-            if (angularSpeedY > 5.5) {
+            if (rotation > 5.5) {
                 db.setLearnedToTrueById(cardCursor.getInt(cardCursor.getColumnIndex("id")));
                 next();
             }
 
-            if (angularSpeedY < -5.5) {
+            if (rotation < -5.5) {
                 next();
             }
         }
@@ -106,7 +107,6 @@ public class LearnViewActivity extends AppCompatActivity implements SensorEventL
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
     }
 
     public void goBack(View view) {

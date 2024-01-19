@@ -1,4 +1,4 @@
-package myapplication.service;
+package Flip2Learn.service;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,7 +13,7 @@ public class CardService extends SQLiteOpenHelper {
 
     private Context context;
     private static final String dbName = "Cards.db";
-    private static final int dbVersion = 1;
+    private static final int dbVersion = 2;
 
     public CardService(@Nullable Context context) {
         super(context, dbName, null, dbVersion);
@@ -22,7 +22,7 @@ public class CardService extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE card (id INTEGER PRIMARY KEY AUTOINCREMENT, germanName TEXT, forgeinName TEXT, learned BOOLEAN)";
+        String query = "CREATE TABLE card (id INTEGER PRIMARY KEY AUTOINCREMENT, germanName TEXT, foreignName TEXT, learned BOOLEAN)";
 
         db.execSQL(query);
 
@@ -35,43 +35,30 @@ public class CardService extends SQLiteOpenHelper {
     }
 
 
-    public void addCard(String germanName, String forgeinName, Boolean learned) {
+    public void addCard(String germanName, String foreignName, Boolean learned) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put("germanName", germanName);
-        contentValues.put("forgeinName", forgeinName);
+        contentValues.put("foreignName", foreignName);
         contentValues.put("learned", learned);
 
-        long result = db.insert("card", null, contentValues);
-
-        if (result == -1) {
-            Toast.makeText(context, "Cardset insertion failed", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "Cardset inserted successfully", Toast.LENGTH_SHORT).show();
-        }
+        db.insert("card", null, contentValues);
     }
 
     public Cursor readCards(){
         String query = "SELECT * FROM card";
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = null;
-        if(db != null){
-            cursor = db.rawQuery(query, null);
-        }
-        return cursor;
+
+        return db.rawQuery(query, null);
     }
 
     public Cursor readCardsNotLearned(){
         String query = "SELECT * FROM card WHERE learned IS false";
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = null;
-        if(db != null){
-            cursor = db.rawQuery(query, null);
-        }
-        return cursor;
+        return db.rawQuery(query, null);
     }
 
 
@@ -91,6 +78,5 @@ public class CardService extends SQLiteOpenHelper {
 
         db.update("card", values, null, null);
         db.close();
-    }
     }
 }

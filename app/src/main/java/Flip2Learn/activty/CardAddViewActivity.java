@@ -1,4 +1,4 @@
-package com.example.myapplication.activty;
+package Flip2Learn.activty;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,22 +9,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 
-import myapplication.service.CardService;
+import Flip2Learn.service.CardService;
 
 public class CardAddViewActivity extends AppCompatActivity {
 
-    EditText germanName, forgeinName;
+    EditText germanName, foreignName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_add_view);
-        forgeinName = findViewById(R.id.forgeinName);
+        foreignName = findViewById(R.id.foreignName);
         germanName = findViewById(R.id.germanName);
     }
     public void add(View view) {
         CardService db = new CardService(CardAddViewActivity.this);
-        db.addCard(germanName.getText().toString(), forgeinName.getText().toString(), false);
+        db.addCard(germanName.getText().toString(), foreignName.getText().toString(), false);
         Intent intent = new Intent(this, CardViewActivity.class);
         startActivity(intent);
     }

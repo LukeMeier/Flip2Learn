@@ -52,7 +52,7 @@ public class CardService extends SQLiteOpenHelper {
         }
     }
 
-    Cursor readCardsfromSet(){
+    public Cursor readCards(){
         String query = "SELECT * FROM card";
         SQLiteDatabase db = this.getReadableDatabase();
 

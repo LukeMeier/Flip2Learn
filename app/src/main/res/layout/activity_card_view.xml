@@ -62,17 +62,13 @@
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="490dp">
+                    android:layout_height="480dp">
 
                     <LinearLayout
                         android:id="@+id/cards"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <!-- Your LinearLayout content goes here -->
-
-                    </LinearLayout>
+                        android:orientation="vertical" />
                 </ScrollView>
 
                 <Space

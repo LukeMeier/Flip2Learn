@@ -87,4 +87,12 @@ public class CardViewActivity extends AppCompatActivity {
             cardCursor.close();
         }
     }
+
+    public  void learn(View view) {
+        CardService db = new CardService(CardViewActivity.this);
+        db.setLearnedToFalse();
+        Cursor cardCursor = db.readCards();
+        Intent intent = new Intent(this, LearnViewActivity.class);
+        startActivity(intent);
+    }
 }

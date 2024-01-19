@@ -63,43 +63,34 @@ public class CardService extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor readCardsNotLearned(){
+        String query = "SELECT * FROM card WHERE learned IS false";
+        SQLiteDatabase db = this.getReadableDatabase();
 
-    public void updateCardToTrue(String id){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put("learned", true);
-
-        long result = db.update("cardset", cv, "id=?", new String[]{id});
-        if(result == -1){
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
         }
-
-    }
-
-    public void updateAllCardsToFalse(String setId){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put("learned", false);
-
-        long result = db.update("cardset", cv, "cardsetId=?", new String[]{setId});
-        if(result == -1){
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
-        }
-
+        return cursor;
     }
 
 
-    public void deleteOneCard(String id){
+    public void setLearnedToTrueById(int cardId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete("card", "id=?", new String[]{id});
-        if(result == -1){
-            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
-        }
+        ContentValues values = new ContentValues();
+        values.put("learned", true);
+
+        db.update("card", values, "id" + "=?", new String[]{String.valueOf(cardId)});
+        db.close();
+    }
+
+    public void setLearnedToFalse() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("learned", false);
+
+        db.update("card", values, null, null);
+        db.close();
+    }
     }
 }

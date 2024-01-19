@@ -25,10 +25,10 @@
             android:name=".activty.CardViewActivity"
             android:exported="true" />
         <activity
-            android:name=".activty.CardsetViewActivity"
+            android:name=".activty.LearnViewActivity"
             android:exported="true" />
         <activity
-            android:name=".activty.CardsetEditViewActivity"
+            android:name=".activty.CardAddViewActivity"
             android:exported="true" />
     </application>
 

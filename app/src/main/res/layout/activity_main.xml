@@ -51,19 +51,6 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_weight="0" />
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_weight="0"
-                    android:onClick="cardset"
-                    android:text="Lernsets verwalten" />
-
-                <Space
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
             </LinearLayout>

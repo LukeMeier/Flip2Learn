@@ -20,11 +20,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CardViewActivity.class);
         startActivity(intent);
     }
-
-    public void cardset(View view) {
-        Intent intent = new Intent(this, CardsetViewActivity.class);
-        startActivity(intent);
-    }
-
-
 }

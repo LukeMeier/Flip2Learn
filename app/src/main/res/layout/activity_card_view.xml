@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activty.MainActivity">
+    tools:context=".activty.CardViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,6 @@
             android:background="#F5F5F5"
             android:orientation="horizontal">
 
-
             <Space
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
@@ -34,6 +33,47 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Lernkarten"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/add"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:onClick="add"
+                        android:src="@drawable/add" />
+
+                </LinearLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="490dp">
+
+                    <LinearLayout
+                        android:id="@+id/cards"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Your LinearLayout content goes here -->
+
+                    </LinearLayout>
+                </ScrollView>
 
                 <Space
                     android:layout_width="match_parent"
@@ -51,6 +91,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0" />
+
         </LinearLayout>
 
     </LinearLayout>
